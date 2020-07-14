@@ -1,5 +1,8 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
+require "rubocop/rake_task"
+require "prettier"
+require "prettier/rake/task"
 require "yard"
 require "yard/rake/yardoc_task"
 
@@ -10,5 +13,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 YARD::Rake::YardocTask.new
+RuboCop::RakeTask.new
+Prettier::Rake::Task.new { |t| t.source_files = "{{lib,test}/**/*.rb,*.gemspec,Rakefile}" }
 
-task :default => :test
+task default: :test

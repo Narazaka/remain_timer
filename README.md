@@ -1,8 +1,6 @@
 # RemainTimer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/remain_timer`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A small tool for estimating and displaying the remaining time of batch jobs/tasks
 
 ## Installation
 
@@ -22,7 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+remain_timer = RemainTimer.new
+remain_timer.all_count = all_users.count
+remain_timer.start
+
+all_users.find_in_batches do |users|
+  remain_timer.remain_time.puts(prefix: "[fetching users]")
+  # [fetching users] past: 20:34 / remain: 55:33 / all: 1:16:07 || past: 24000 / remain: 12000 / all: 36000
+  ... # main process
+  remain_timer.progress(users.size)
+end
+```
 
 ## Development
 

@@ -18,7 +18,9 @@ describe RemainTimer::RemainTime do
       end
 
       it do
-        assert { subject == "past: 20:34 / remain: 55:33 / all: 1:16:07 || past: 24 / remain: 12 / all: 36" }
+        assert do
+          subject == "past: 20:34 / remain: 55:33 / all: 1:16:07 || past: 24 / remain: 12 / all: 36"
+        end
       end
     end
 
@@ -35,9 +37,7 @@ describe RemainTimer::RemainTime do
         )
       end
 
-      it do
-        assert { subject == "past: 23 / remain: ? / all: ? || past: 24 / remain: ? / all: ?" }
-      end
+      it { assert { subject == "past: 23 / remain: ? / all: ? || past: 24 / remain: ? / all: ?" } }
     end
   end
 end

@@ -1,6 +1,8 @@
 require "remain_timer/version"
 require "chronic_duration"
 
+# rubocop:disable Airbnb/OptArgParameters
+
 class RemainTimer
   attr_accessor :all_count, :estimate_laptime_size, :duration_format
 
@@ -84,3 +86,5 @@ class RemainTimer
       end
     end
 end
+
+# rubocop:enable Airbnb/OptArgParameters

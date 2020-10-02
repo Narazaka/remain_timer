@@ -9,7 +9,6 @@ class RemainTimer
   def initialize(estimate_laptime_size: 20)
     @laptimes = []
     @estimate_laptime_size = estimate_laptime_size
-    @duration_format = duration_format
   end
 
   def start(count = 0, time = now)

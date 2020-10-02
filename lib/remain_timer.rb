@@ -1,12 +1,12 @@
 require "remain_timer/version"
-require "chronic_duration"
+require "duration_format"
 
 # rubocop:disable Airbnb/OptArgParameters
 
 class RemainTimer
-  attr_accessor :all_count, :estimate_laptime_size, :duration_format
+  attr_accessor :all_count, :estimate_laptime_size
 
-  def initialize(estimate_laptime_size: 20, duration_format: :chrono)
+  def initialize(estimate_laptime_size: 20)
     @laptimes = []
     @estimate_laptime_size = estimate_laptime_size
     @duration_format = duration_format
@@ -42,7 +42,6 @@ class RemainTimer
       all_count: all_count,
       past_count: past_count,
       remain_count: remain_count,
-      duration_format: duration_format,
     )
   end
 
@@ -62,7 +61,6 @@ class RemainTimer
       :all_count,
       :past_count,
       :remain_count,
-      :duration_format,
       keyword_init: true,
     ) do
       def to_s
@@ -82,7 +80,7 @@ class RemainTimer
       private
 
       def dfmt(duration)
-        duration.nil? ? "?" : ChronicDuration.output(duration, format: duration_format)
+        duration.nil? ? "?" : DurationFormat.format(duration)
       end
     end
 end

@@ -23,6 +23,4 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = %w[lib]
-
-  spec.add_dependency "chronic_duration", "~> 0.10"
 end

@@ -13,13 +13,12 @@ describe RemainTimer::RemainTime do
           all_count: 36,
           past_count: 24,
           remain_count: 12,
-          duration_format: :chrono,
         )
       end
 
       it do
         assert do
-          subject == "past: 20:34 / remain: 55:33 / all: 1:16:07 || past: 24 / remain: 12 / all: 36"
+          subject == "past: 00:20:34 / remain: 00:55:33 / all: 01:16:07 || past: 24 / remain: 12 / all: 36"
         end
       end
     end
@@ -33,11 +32,14 @@ describe RemainTimer::RemainTime do
           all_count: nil,
           past_count: 24,
           remain_count: nil,
-          duration_format: :chrono,
         )
       end
 
-      it { assert { subject == "past: 23 / remain: ? / all: ? || past: 24 / remain: ? / all: ?" } }
+      it do
+        assert do
+          subject == "past: 00:00:23 / remain: ? / all: ? || past: 24 / remain: ? / all: ?"
+        end
+      end
     end
   end
 end

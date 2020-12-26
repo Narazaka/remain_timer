@@ -1,0 +1,11 @@
+# Classes
+class DurationFormat
+  SECONDS_PER_DAY: Integer
+  SECONDS_PER_HOUR: Integer
+  SECONDS_PER_MINUTE: Integer
+  PARTS: [:day, :hour, :min, :sec]
+  PARTS_IN_SECONDS: {sec: Integer, min: Integer, hour: Integer, day: Integer}
+
+  def self.build_parts: (Integer | Float value) -> {day: Integer, hour: Integer, min: Integer, sec: Float}
+  def self.format: (Integer | Float value) -> String
+end

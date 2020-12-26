@@ -1,0 +1,43 @@
+# Classes
+class RemainTimer
+  @laptimes: Array[LapTime]
+  @use_current: bool
+
+  attr_accessor all_count: Integer?
+  attr_accessor estimate_laptime_size: Integer
+  def initialize: (?estimate_laptime_size: Integer) -> Integer
+  def start: (?Integer count, ?Time time) -> Array[LapTime]
+  def progress: (Integer count, ?Time time) -> Array[LapTime]
+  def remain_time: -> RemainTime
+
+  private
+
+  def now: -> Time
+
+  class LapTime < Struct[Integer | Time]
+    def initialize: (Integer past_count, Time time) -> untyped
+    attr_accessor past_count(): Integer
+    attr_accessor time(): Time
+  end
+
+  class RemainTime < Struct[Integer | Float | nil]
+    def initialize: (
+      all_duration: Integer | Float?,
+      past_duration: Integer | Float,
+      remain_duration: Integer | Float?,
+      all_count: Integer?,
+      past_count: Integer,
+      remain_count: Integer?,
+    ) -> untyped
+    attr_accessor all_duration(): Integer | Float?
+    attr_accessor past_duration(): Integer | Float
+    attr_accessor remain_duration(): Integer | Float?
+    attr_accessor all_count(): Integer?
+    attr_accessor past_count(): Integer
+    attr_accessor remain_count(): Integer?
+    def to_s: -> String
+    def puts: (?prefix: String?, ?postfix: String?) -> nil
+    def print: (?prefix: String?, ?postfix: String?) -> untyped
+    def dfmt: (Integer | Float duration) -> String
+  end
+end

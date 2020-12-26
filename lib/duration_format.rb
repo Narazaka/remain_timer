@@ -11,7 +11,9 @@ class DurationFormat
   }.freeze
 
   def self.build_parts(value)
+    # @type var parts: { day: Integer, hour: Integer, min: Integer, sec: Float }
     parts = {}
+    # @type var remainder: Integer | Float
     remainder = value.to_f
 
     PARTS.each do |part|
